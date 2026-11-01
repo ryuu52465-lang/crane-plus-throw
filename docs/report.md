@@ -2,7 +2,7 @@
 
 Physical AI 応用1講座 最終課題 説明資料
 
-- 動画: https://youtu.be/knTTkEDmxwo※等速再生（倍速なし）
+- 動画: https://youtu.be/knTTkEDmxwo （等速再生、倍速なし）
 - コード: https://github.com/ryuu52465-lang/crane-plus-throw
 
 ---

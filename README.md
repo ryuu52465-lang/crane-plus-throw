@@ -9,7 +9,7 @@ Physical AI 応用1講座の最終課題として作りました。
 
 ランダムな位置に置いた箱（内寸8cm角）への投げ入れで、10回中10回成功しました。
 
-- 動画: （YouTubeのURL）
+- 動画: https://youtu.be/knTTkEDmxwo
 - 説明資料: [docs/report.md](docs/report.md)
 
 ![スナップ投げ](docs/images/snap_sequence.png)

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- 書籍のCRANE+ V2モデルに、物体を手先へ固定/解放するDetachableJointを追加したもの -->
+<robot name="crane_plus" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find crane_plus_description)/urdf/crane_plus.urdf.xacro"/>
+
+  <gazebo>
+    <!-- 起動直後は固定された状態になるため、throw_nodeが最初にdetachを送る -->
+    <plugin filename="ignition-gazebo-detachable-joint-system"
+            name="ignition::gazebo::systems::DetachableJoint">
+      <parent_link>crane_plus_link4</parent_link>
+      <child_model>ball</child_model>
+      <child_link>link</child_link>
+      <attach_topic>/throw/attach</attach_topic>
+      <detach_topic>/throw/detach</detach_topic>
+    </plugin>
+  </gazebo>
+
+  <!-- ロボットの衝突グループを0x01にする。ボールは0x02なので、ロボットとボールは当たらない.
+       手先に固定したボールが手と重なっていると、その反発で手首が可動限界に押し付けられたため -->
+  <xacro:macro name="robot_collide_group" params="link">
+    <gazebo reference="${link}">
+      <collision>
+        <surface><contact><collide_bitmask>0x01</collide_bitmask></contact></surface>
+      </collision>
+    </gazebo>
+  </xacro:macro>
+  <xacro:robot_collide_group link="crane_plus_base"/>
+  <xacro:robot_collide_group link="crane_plus_link1"/>
+  <xacro:robot_collide_group link="crane_plus_link2"/>
+  <xacro:robot_collide_group link="crane_plus_link3"/>
+  <xacro:robot_collide_group link="crane_plus_link4"/>
+  <xacro:robot_collide_group link="crane_plus_link_hand"/>
+
+</robot>

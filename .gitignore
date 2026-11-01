@@ -1,0 +1,14 @@
+# colconの生成物
+build/
+install/
+log/
+
+# YOLOの重み(初回実行時に自動ダウンロードされる)
+*.pt
+!data/throw_model.pt
+
+__pycache__/
+*.pyc
+
+# 動画(YouTubeに上げる。リポジトリには入れない)
+video/
